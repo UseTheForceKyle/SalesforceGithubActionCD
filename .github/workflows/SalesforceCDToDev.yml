@@ -1,4 +1,4 @@
-name: CD CI of SFDX project to Development Integration Sandbox
+name: CD CI SFDX project to Development Integration Sandbox
 
 on:
   push:
