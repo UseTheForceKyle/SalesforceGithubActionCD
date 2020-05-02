@@ -22,6 +22,10 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2           
     - name: Write the token into a file
+    # DEVHUB_TOKEN is to be created on your local machine by running:
+    # sfdx force:auth:web:login
+    # sfdx force:force:org:display -u <yourusername> --verbose
+    # copying Sfdx Auth Url to the secret DEVHUB_TOKEN
       run: 'echo ${{ secrets.DEVHUB_TOKEN}} > token.txt'
     - name: Install Salesforce CLI
       run: |
