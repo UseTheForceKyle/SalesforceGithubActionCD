@@ -14,18 +14,20 @@ on:
             - 'force-app/**'
 
 jobs:
+  Source Code Analysis:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: sfdx-actions/setup-pmd@v1    
+    - name: PMD Source Code Analyzer Action - Lint Apex code 
+      run: pmd -d ./force-app/main/default/classes -R category/apex/design.xml -f text
+      
+    - name: 'Lint Lightning Web Components'
+      run: npm run lint:lwc
+
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: sfdx-actions/setup-pmd@v1          
-
-    - name: PMD Source Code Analyzer Action - Lint Apex code 
-      run: pmd -d ./force-app/main/default/classes -R category/apex/design.xml -f text
-
-    # ESlint
-    - name: 'Lint Lightning Web Components'
-      run: npm run lint:lwc
+    - uses: actions/checkout@v2      
 
     # DEVHUB_TOKEN is to be created on your local machine by running:
     # sfdx force:auth:web:login
