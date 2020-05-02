@@ -3,14 +3,28 @@ name: CD CI of SFDX project to scratch org
 on:
   push:
     branches: [ master ]
+    paths:
+        - 'force-app/**'
   pull_request:
-    branches: [ master ]
+        types: [opened, synchronize, reopened]
+        branches:
+            - master
+        paths:
+            - 'force-app/**'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2           
+    - uses: actions/checkout@v2
+    - uses: sfdx-actions/setup-pmd@v1          
+
+    - name: PMD Source Code Analyzer Action - Lint Apex code 
+      run: pmd -d ./force-app/main/default/classes -R category/apex/design.xml -f text
+
+    # ESlint
+    - name: 'Lint Lightning Web Components'
+      run: npm run lint:lwc
 
     # DEVHUB_TOKEN is to be created on your local machine by running:
     # sfdx force:auth:web:login
@@ -31,7 +45,7 @@ jobs:
 
     - name: Create scratch org
       run: 'sfdx force:org:create -f config/project-scratch-def.json -a my-scratch'
-
+      
     - name: Push source
       run: 'sfdx force:source:push -u my-scratch'
 
