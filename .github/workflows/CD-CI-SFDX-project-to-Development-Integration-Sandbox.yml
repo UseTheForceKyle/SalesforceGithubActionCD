@@ -14,7 +14,7 @@ on:
             - 'force-app/**'
 
 jobs:
-  Source Code Analysis:
+  Source_Code_Analysis:
     runs-on: ubuntu-latest
     steps:
     - uses: sfdx-actions/setup-pmd@v1    
