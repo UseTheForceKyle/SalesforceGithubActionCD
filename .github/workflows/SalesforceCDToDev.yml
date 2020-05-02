@@ -1,6 +1,4 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CI
+name: CD CI of SFDX project to scratch org
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -33,20 +31,31 @@ jobs:
         mkdir sfdx-cli
         tar xJf sfdx-linux-amd64.tar.xz -C sfdx-cli --strip-components 1
         ./sfdx-cli/install
+
     - name: Auth with the DevHub
       run: 'sfdx force:auth:sfdxurl:store -f token.txt -a DevHub -d  > /dev/null'
+
     - name: Create scratch org
       run: 'sfdx force:org:create -f config/project-scratch-def.json -a my-scratch'
+
     - name: Push source
       run: 'sfdx force:source:push -u my-scratch'
-    - name: List orgs
-      run: 'sfdx force:org:list'
+
+    - name: 'Assign Permissionset'
+      run: 'sfdx force:user:permset:assign -n recipes'
+
+    - name: 'Import test data'
+      run: 'sfdx force:data:tree:import -p ./data/data-plan.json'
+
     - name: Run tests
       run: 'sfdx force:apex:test:run -u my-scratch --resultformat human'
-    - name: Salesforce SFDX CLI Action
-      uses: sfdx-actions/setup-sfdx@v1
+
+      
       #Housekeeping
     - name: Always Delete scratch org
       if: always()
       run: 'sfdx force:org:delete -u my-scratch --noprompt'
 
+
+ #   - name: Salesforce SFDX CLI Action
+ #     uses: sfdx-actions/setup-sfdx@v1
