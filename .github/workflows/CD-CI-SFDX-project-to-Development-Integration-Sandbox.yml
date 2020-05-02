@@ -17,17 +17,36 @@ jobs:
   Source_Code_Analysis:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '10.x'
-    #::TODO:: turn back on, current getting this: ##[error]mkdir: cannot create directory ‘/snap/bin’: File exists
-    #- uses: sfdx-actions/setup-pmd@v1    
-    #- name: PMD Source Code Analyzer Action - Lint Apex code 
-    #  run: pmd -d ./force-app/main/default/classes -R category/apex/design.xml -f text
-      
-    - name: 'Lint Lightning Web Components'
-      run: npm run lint:lwc
+         # Checkout the code in the pull request
+      - name: 'Checkout source code'
+        uses: actions/checkout@v2
+
+      # Cache node_modules to speed up the process
+      - name: Restore node_modules cache
+        id: cache-npm
+        uses: actions/cache@v1
+        with:
+            path: node_modules
+            key: npm-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+                npm-${{ env.cache-name }}-
+                npm-
+      # Install npm dependencies for Prettier and Jest
+      - name: 'Install npm dependencies'
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+        run: npm install
+
+      # Prettier formatting
+      - name: 'Code formatting verification with Prettier'
+        run: npm run prettier:verify
+
+      # ESlint
+      - name: 'Lint Lightning Web Components'
+        run: npm run lint:lwc
+
+      # Unit tests
+      - name: 'Unit test Lightning Web Components'
+        run: npm run test:unit:coverage
 
   build:
     runs-on: ubuntu-latest
