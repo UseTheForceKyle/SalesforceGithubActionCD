@@ -43,8 +43,10 @@ jobs:
       run: 'sfdx force:org:list'
     - name: Run tests
       run: 'sfdx force:apex:test:run -u my-scratch --resultformat human'
-    - name: Delete scratch org
-      run: 'sfdx force:org:delete -u my-scratch --noprompt'
     - name: Salesforce SFDX CLI Action
       uses: sfdx-actions/setup-sfdx@v1
+      #Housekeeping
+    - name: Always Delete scratch org
+      if: always()
+      run: 'sfdx force:org:delete -u my-scratch --noprompt'
 
