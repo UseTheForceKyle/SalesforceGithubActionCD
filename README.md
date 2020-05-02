@@ -1,4 +1,4 @@
-![](https://github.com/UseTheForceKyle/SalesforceGithubActionCD/workflows/CD%20CI%20of%20SFDX%20project%20to%20scratch%20org/badge.svg)
+![](https://github.com/UseTheForceKyle/SalesforceGithubActionCD/workflows/CD CI of SFDX project to Development Integration Sandbox/badge.svg)
 # Setting up SFDX project w/ Github Actions
 
 # Prereqs:
