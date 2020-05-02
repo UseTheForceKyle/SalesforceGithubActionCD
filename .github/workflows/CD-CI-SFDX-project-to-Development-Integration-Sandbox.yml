@@ -17,9 +17,10 @@ jobs:
   Source_Code_Analysis:
     runs-on: ubuntu-latest
     steps:
-    - uses: sfdx-actions/setup-pmd@v1    
-    - name: PMD Source Code Analyzer Action - Lint Apex code 
-      run: pmd -d ./force-app/main/default/classes -R category/apex/design.xml -f text
+    #::TODO:: turn back on, current getting this: ##[error]mkdir: cannot create directory ‘/snap/bin’: File exists
+    #- uses: sfdx-actions/setup-pmd@v1    
+    #- name: PMD Source Code Analyzer Action - Lint Apex code 
+    #  run: pmd -d ./force-app/main/default/classes -R category/apex/design.xml -f text
       
     - name: 'Lint Lightning Web Components'
       run: npm run lint:lwc
