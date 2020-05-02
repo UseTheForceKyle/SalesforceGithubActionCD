@@ -14,6 +14,7 @@ on:
             - 'force-app/**'
 
 jobs:
+  
   Source_Code_Analysis:
     runs-on: ubuntu-latest
     steps:
@@ -37,16 +38,16 @@ jobs:
         run: npm install
 
       # Prettier formatting
-      - name: 'Code formatting verification with Prettier'
-        run: npm run prettier:verify
+     # - name: 'Code formatting verification with Prettier'
+      #  run: npm run prettier:verify
 
       # ESlint
-      - name: 'Lint Lightning Web Components'
-        run: npm run lint:lwc
+     # - name: 'Lint Lightning Web Components'
+     #   run: npm run lint:lwc
 
       # Unit tests
-      - name: 'Unit test Lightning Web Components'
-        run: npm run test:unit:coverage
+     # - name: 'Unit test Lightning Web Components'
+     #   run: npm run test:unit:coverage
 
   build:
     runs-on: ubuntu-latest
