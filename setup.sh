@@ -1,1 +1,4 @@
-sfdx force:source:retrieve -x path/to/package.xml
+#Log in, get all source from your Sandbox.
+sfdx force:auth:web:login
+cd metadata
+sfdx force:source:retrieve --manifest=AllSourcePackage.xml
