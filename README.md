@@ -1,4 +1,5 @@
 ![](https://github.com/UseTheForceKyle/SalesforceGithubActionCD/workflows/CD CI of SFDX project to Development Integration Sandbox/badge.svg)
+
 # Setting up SFDX project w/ Github Actions
 
 # Prereqs:
