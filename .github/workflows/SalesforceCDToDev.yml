@@ -34,7 +34,7 @@ jobs:
         tar xJf sfdx-linux-amd64.tar.xz -C sfdx-cli --strip-components 1
         ./sfdx-cli/install
     - name: Auth with the DevHub
-      run: 'sfdx force:auth:sfdxurl:store -f token.txt -a DevHub -d'
+      run: 'sfdx force:auth:sfdxurl:store -f token.txt -a DevHub -d  > /dev/null'
     - name: Create scratch org
       run: 'sfdx force:org:create -f config/project-scratch-def.json -a my-scratch'
     - name: Push source
