@@ -1,4 +1,4 @@
-name: CD CI of SFDX project to scratch org
+name: CD CI of SFDX project to Development Integration Sandbox
 
 on:
   push:
