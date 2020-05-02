@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The Test Field help text --></help>
+    <label><!-- Test Field1 --></label>
+    <name>MyTestField__c</name>
+</CustomFieldTranslation>

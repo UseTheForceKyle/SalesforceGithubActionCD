@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Test Queue</name>
+    <queueMembers>
+        <users>
+            <user>davelhs03@brave-badger-474489.com</user>
+        </users>
+    </queueMembers>
+    <queueRoutingConfig>Test_Queue</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>LiveChatTranscript</sobjectType>
+    </queueSobject>
+</Queue>

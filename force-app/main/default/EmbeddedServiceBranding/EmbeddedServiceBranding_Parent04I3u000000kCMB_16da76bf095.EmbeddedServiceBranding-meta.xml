@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmbeddedServiceBranding xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contrastInvertedColor>#ffffff</contrastInvertedColor>
+    <contrastPrimaryColor>#333333</contrastPrimaryColor>
+    <embeddedServiceConfig>Webchat_Group</embeddedServiceConfig>
+    <font>Arial</font>
+    <masterLabel>EmbeddedServiceBranding_Parent04I3u000000kCMB_16da76bf096</masterLabel>
+    <navBarColor>#222222</navBarColor>
+    <primaryColor>#222222</primaryColor>
+    <secondaryColor>#005290</secondaryColor>
+</EmbeddedServiceBranding>
